@@ -1,19 +1,38 @@
 import { motion } from "framer-motion";
 
+const InputField = ({ label }) => (
+  <div className="relative w-[300px]">
+    <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-sm font-semibold">
+      {label}
+    </label>
+    <input
+      type="text"
+      className="w-full px-4 py-3 bg-transparent border border-white rounded-full text-white placeholder-transparent focus:outline-none focus:ring-0"
+      placeholder={label}
+    />
+  </div>
+);
+
 const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
   };
 
+  const fields = ["Name", "Company Name", "Email", "Phone Number"];
+
   return (
-    <section id="contact" className="min-h-screen py-20 ">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="min-h-screen py-20">
+      <div className="container mx-auto px-6 flex">
+        <img
+          src="/assets/images/M10iD_12-Fanuc-Robot-1200x2062.png"
+          className="w-1/2 h-[800px]"
+        />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
+          className="w-1/2 flex flex-col justify-center"
         >
           <h2
             className="text-4xl font-black text-center mb-16 text-white"
@@ -23,38 +42,29 @@ const ContactSection = () => {
           </h2>
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="grid grid-cols-2 gap-8">
-              <input
-                type="text"
-                placeholder="Name"
-                className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-              <input
-                type="text"
-                placeholder="Company Name"
-                className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
-              <input
-                type="tel"
-                placeholder="Phone Number"
-                className="p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-              />
+              {fields.map((field) => (
+                <InputField key={field} label={field} />
+              ))}
             </div>
-            <textarea
-              placeholder="Describe your project"
-              rows={6}
-              className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 outline-none"
-            ></textarea>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Send Message
-            </button>
+
+            <div className="relative">
+              <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-sm font-semibold">
+                Describe Your Project
+              </label>
+              <textarea
+                placeholder="Describe your project"
+                rows={6}
+                className="w-full px-4 py-3 bg-transparent border border-white rounded-[20px] text-white placeholder-transparent focus:outline-none focus:ring-0"
+              ></textarea>
+            </div>
+            <div className="w-full flex justify-end">
+              <button
+                type="submit"
+                className=" bg-[var(--yellow-color)] text-white p-5 m-left-auto rounded-lg  transition-colors shadow-lg"
+              >
+                Send Message
+              </button>
+            </div>
           </form>
         </motion.div>
       </div>

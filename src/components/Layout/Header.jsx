@@ -19,7 +19,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 50;
 
       sections.forEach((section) => {
         if (section) {
@@ -40,7 +40,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 shadow-sm">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-opacity-20 shadow-sm z-[1000]">
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         <div className="logo">
           <img src="/assets/images/Logo+gear.png" alt="Logo" className="h-20" />
@@ -51,11 +51,12 @@ const Header = () => {
               <li key={item.id}>
                 <button
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-lg font-medium ${
+                  className={`text-lg font-black text-center ${
                     activeSection === item.id
                       ? "text-secondary"
                       : "text-white hover:text-secondary"
                   }`}
+                  style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
                 >
                   {item.label}
                 </button>

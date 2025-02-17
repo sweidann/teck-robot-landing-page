@@ -21,7 +21,7 @@ export default {
           position: "relative",
           borderRadius: "9999px", // Fully rounded border
           padding: "7px", // Border thickness effect
-          background: "linear-gradient(to right, #edf71f, #f18119)",
+          background: "linear-gradient(180deg, #DCBD20 0%, #DF861E 100%)",
           boxShadow:
             "0 0 15px rgba(22, 22, 21, 0.7), 0 0 25px rgba(27, 26, 26, 0.6)",
         },
@@ -36,7 +36,8 @@ export default {
     function ({ addUtilities }) {
       addUtilities({
         ".text-secondary": {
-          "background-image": "linear-gradient(to right, #edf71f, #f18119)",
+          background:
+            "linear-gradient(90deg, rgba(237, 247, 31, 0.75) 0%, rgba(241, 129, 25, 0.75) 142.16%)",
           "-webkit-background-clip": "text",
           "-webkit-text-fill-color": "transparent",
         },

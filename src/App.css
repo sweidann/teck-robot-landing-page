@@ -5,9 +5,15 @@
 body {
   background: var(--primary-color);
   font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
 :root {
   --primary-color: #a71e1e;
   --secondary-color: text-linear-gradient(to right, #edf71f, #f18119);
+  --yellow-color: #e5c61e;
+}
+
+section > .container {
+  padding-top: 80px;
 }

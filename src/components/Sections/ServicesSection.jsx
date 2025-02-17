@@ -10,7 +10,7 @@ const ServiceItem = ({ image, description, isReversed }) => {
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.5 }}
         className="w-1/2 flex justify-center"
       >
@@ -24,7 +24,7 @@ const ServiceItem = ({ image, description, isReversed }) => {
       <motion.div
         initial={{ opacity: 0, x: isReversed ? -100 : 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.5 }}
         className={`w-1/2 flex  ${
           isReversed ? "justify-end" : "justify-start"
