@@ -3,7 +3,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useEffect } from "react";
 
 const MechArm = ({ grab }) => {
-  const { scene } = useGLTF("/assets/models/mech_arm_colored.glb");
+  const { scene } = useGLTF("./assets/models/mech_arm_colored.glb");
   const armRef = useRef();
 
   useEffect(() => {
@@ -33,6 +33,6 @@ const MechArm = ({ grab }) => {
   return <primitive object={scene} ref={armRef} scale={[4, 4, 4]} />;
 };
 
-useGLTF.preload("/assets/models/mech_arm_colored.glb");
+useGLTF.preload("./assets/models/mech_arm_colored.glb");
 
 export default MechArm;

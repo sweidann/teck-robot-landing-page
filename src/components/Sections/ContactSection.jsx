@@ -24,7 +24,7 @@ const ContactSection = () => {
     <section id="contact" className="min-h-screen py-20">
       <div className="container mx-auto px-6 flex">
         <img
-          src="/assets/images/M10iD_12-Fanuc-Robot-1200x2062.png"
+          src="./assets/images/M10iD_12-Fanuc-Robot-1200x2062.png"
           className="w-1/2 h-[800px]"
         />
         <motion.div

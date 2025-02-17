@@ -39,19 +39,19 @@ const ServiceItem = ({ image, description, isReversed }) => {
 const ServicesSection = () => {
   const services = [
     {
-      image: "/assets/images/Projects Studies.png",
+      image: "./assets/images/Projects Studies.png",
       description: "Project and feasibility studies",
     },
     {
-      image: "/assets/images/Right Robot.png",
+      image: "./assets/images/Right Robot.png",
       description: "Hiring the Right Robot",
     },
     {
-      image: "/assets/images/Installation.png",
+      image: "./assets/images/Installation.png",
       description: "Installation and integration",
     },
     {
-      image: "/assets/images/Maintenance.png",
+      image: "./assets/images/Maintenance.png",
       description: "Technical Support and Maintenance",
     },
   ];

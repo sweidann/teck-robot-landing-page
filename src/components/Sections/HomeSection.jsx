@@ -11,7 +11,7 @@ const HomeSection = () => {
 
   useEffect(() => {
     // Load the audio file
-    const sound = new Audio("/assets/sounds/arm_sound_effect.wav");
+    const sound = new Audio("./assets/sounds/arm_sound_effect.wav");
     setAudio(sound);
 
     // Delay the animation reset
@@ -82,7 +82,7 @@ const HomeSection = () => {
           transition={{ duration: 0.8, ease: "easeInOut" }}
         >
           <img
-            src={"/assets/images/LOgo11.png"}
+            src={"./assets/images/LOgo11.png"}
             alt={"Teck Robot"}
             className="w-full h-full object-cover"
           />

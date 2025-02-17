@@ -43,7 +43,11 @@ const Header = () => {
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-opacity-20 shadow-sm z-[1000]">
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         <div className="logo">
-          <img src="/assets/images/Logo+gear.png" alt="Logo" className="h-20" />
+          <img
+            src="./assets/images/Logo+gear.png"
+            alt="Logo"
+            className="h-20"
+          />
         </div>
         <nav>
           <ul className="flex gap-20">
