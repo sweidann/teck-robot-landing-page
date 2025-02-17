@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: var(--primary-color);
+  font-family: "Inter", sans-serif;
+}
+
+:root {
+  --primary-color: #a71e1e;
+  --secondary-color: text-linear-gradient(to right, #edf71f, #f18119);
+}
