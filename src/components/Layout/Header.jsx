@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
     { id: "home", label: "Home" },
@@ -15,6 +16,15 @@ const Header = () => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Change blur when scrolled 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +50,14 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-opacity-20 shadow-sm z-[1000]">
+    <header
+      className={`fixed top-0 left-0 w-full transition-all duration-300 z-[1000]
+        ${
+          isScrolled
+            ? "backdrop-blur-lg bg-opacity-20 shadow-md"
+            : "bg-opacity-0"
+        }`}
+    >
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         <div className="logo">
           <img

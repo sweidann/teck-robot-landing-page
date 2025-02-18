@@ -1,0 +1,22 @@
+import React from "react";
+
+const GearsContainer = ({ gear2, gear3, gear4, rotation }) => {
+  return (
+    <div
+      className={`gears-container relative w-[500px] h-[500px] mx-auto ${rotation} `}
+    >
+      <img
+        src="./assets/images/Gear1.png"
+        className="absolute top-[-50px] left-[-50px] z-[200]"
+      />
+      <img src={gear2} className="absolute top-[40px] right-[-150px]" />
+      <img src={gear4} className="absolute bottom-[-100px] right-[-120px]" />
+      <img
+        src={gear3}
+        className="absolute bottom-[-150px] left-[80px] rotate-[60]"
+      />
+    </div>
+  );
+};
+
+export default GearsContainer;

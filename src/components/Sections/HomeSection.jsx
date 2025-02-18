@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import MechArm from "../MechArm";
+import GearsContainer from "../GearsContainer";
 
 const HomeSection = () => {
   const [grab, setGrab] = useState(true);
@@ -74,8 +75,8 @@ const HomeSection = () => {
           className="absolute translate-x-250 translate-y-60  w-[300px] h-[300px] " // Overlay on top of Canvas
           initial={{ x: 200, y: -150, scale: 1.2 }}
           whileInView={{
-            y: grab ? 60 : -150, // Move logo up when grabbed
-            x: grab ? 250 : 200, // Move left
+            y: grab ? 60 : -150,
+            x: grab ? 250 : 200,
             scale: grab ? 1 : 1.2,
           }}
           viewport={{ once: true }}
@@ -93,6 +94,16 @@ const HomeSection = () => {
             RENT A ROBOT
           </p>
         </motion.div>
+        <div className="opacity-30 absolute top-20 right-[-15%]">
+          <GearsContainer
+            gear2={"./assets/images/Gear2.png"}
+            gear3={"./assets/images/Gear3.png"}
+            gear4={"./assets/images/Gear4.png"}
+            // opacity={"opacity-50"}
+            // position="absolute top-20 right-[-15%]"
+            rotation={"rotate-[180deg]"}
+          />
+        </div>
       </div>
     </section>
   );

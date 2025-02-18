@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import GearsContainer from "../GearsContainer";
 
 const AboutSection = () => {
   return (
@@ -11,24 +12,11 @@ const AboutSection = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
           >
-            <div className="gears-container relative w-[500px] h-[500px] mx-auto">
-              <img
-                src="./assets/images/Gear1.png"
-                className="absolute top-[-50px] left-[-50px] z-[200]"
-              />
-              <img
-                src="./assets/images/Gear2.png"
-                className="absolute top-[40px] right-[-150px]"
-              />
-              <img
-                src="./assets/images/Gear4.png"
-                className="absolute bottom-[-100px] right-[-120px]"
-              />
-              <img
-                src="./assets/images/Gear3.png"
-                className="absolute bottom-[-150px] left-[80px] rotate-[60]"
-              />
-            </div>
+            <GearsContainer
+              gear2={"./assets/images/Gear2.png"}
+              gear3={"./assets/images/Gear3.png"}
+              gear4={"./assets/images/Gear4.png"}
+            />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 100 }}
