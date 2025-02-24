@@ -5,19 +5,20 @@ import { useRef, useState, useEffect } from "react";
 import MechArm from "../MechArm";
 import GearsContainer from "../GearsContainer";
 
+
 const HomeSection = () => {
   const [grab, setGrab] = useState(true);
 
   const [audio, setAudio] = useState(null);
 
-  useEffect(() => {
-    // Load the audio file
-    const sound = new Audio("./assets/sounds/arm_sound_effect.wav");
-    setAudio(sound);
+  // useEffect(() => {
+  //   // Load the audio file
+  //   const sound = new Audio("./assets/sounds/arm_sound_effect.wav");
+  //   setAudio(sound);
 
-    // Delay the animation reset
-    // setTimeout(() => setGrab(false), 1000);
-  }, []);
+  //   // Delay the animation reset
+  //   // setTimeout(() => setGrab(false), 1000);
+  // }, []);
 
   // Function to play the audio after user interaction
   const handlePlaySound = () => {
@@ -36,9 +37,9 @@ const HomeSection = () => {
       {/* Container with relative positioning */}
       <div className="relative w-full h-full flex items-center justify-center">
         {/* 3D Model Canvas (Bigger to Avoid Clipping) */}
-        <Canvas
+        {/* <Canvas
           shadows
-          className="absolute w-full h-full" // Make canvas cover the full section
+          className="absolute w-full h-full" 
           camera={{ fov: 50, position: [0, 0, 0] }}
           onClick={() => {
             setGrab(!grab);
@@ -58,7 +59,7 @@ const HomeSection = () => {
             position={[5, 10, 5]}
             intensity={12}
           />
-          {/* <ambientLight intensity={10} /> */}
+          <ambientLight intensity={10} />
           <spotLight
             position={[10, 10, 10]}
             intensity={2}
@@ -67,9 +68,12 @@ const HomeSection = () => {
           />
           <pointLight position={[10, 10, 10]} intensity={2} />
           <MechArm grab={grab} />
-          {/* <OrbitControls enableZoom={false} /> */}
-        </Canvas>
-
+          <OrbitControls enableZoom={false} />
+        </Canvas> */}
+        <video autoPlay loop muted>
+          <source src={'./assets/videos/mechArmVideo.mp4'} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         {/* Logo (Positioned in front of the mech arm) */}
         <motion.div
           className="absolute translate-x-250 translate-y-60  w-[300px] h-[300px] " // Overlay on top of Canvas
