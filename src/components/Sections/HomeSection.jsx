@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion , useAnimation  } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
@@ -6,19 +6,31 @@ import MechArm from "../MechArm";
 import GearsContainer from "../GearsContainer";
 
 
+
+
 const HomeSection = () => {
   const [grab, setGrab] = useState(true);
-
   const [audio, setAudio] = useState(null);
+  const sectionRef = useRef(null);
+  const [armPosition, setArmPosition] = useState({ x: 0, y: 0, z: -7 }); // Initial position
+  const controls = useAnimation();
 
-  // useEffect(() => {
-  //   // Load the audio file
-  //   const sound = new Audio("./assets/sounds/arm_sound_effect.wav");
-  //   setAudio(sound);
+  const startLogoAnimation = () => {
+    controls.start({
+      x: [ 250, 200 ], // Start at -800, go to 250, then to 200
+      y: [ 50, -150 ],      // Start at 0, stay at 0, then go to -150
+      transition: { duration: 1, ease: 'easeInOut' } // Adjust duration as needed
+    });
+  };
+  
+  useEffect(() => {
+    // Load the audio file
+    const sound = new Audio("./assets/sounds/arm_sound_effect.wav");
+    setAudio(sound);
 
-  //   // Delay the animation reset
-  //   // setTimeout(() => setGrab(false), 1000);
-  // }, []);
+    // setGrab(true);
+    // handlePlaySound();
+  }, []);
 
   // Function to play the audio after user interaction
   const handlePlaySound = () => {
@@ -37,14 +49,14 @@ const HomeSection = () => {
       {/* Container with relative positioning */}
       <div className="relative w-full h-full flex items-center justify-center">
         {/* 3D Model Canvas (Bigger to Avoid Clipping) */}
-        {/* <Canvas
+        <Canvas
           shadows
           className="absolute w-full h-full" 
           camera={{ fov: 50, position: [0, 0, 0] }}
-          onClick={() => {
-            setGrab(!grab);
-            handlePlaySound();
-          }}
+          // onClick={() => {
+          //   setGrab(!grab);
+          //   handlePlaySound();
+          // }}
         >
           <directionalLight
             castShadow
@@ -59,7 +71,7 @@ const HomeSection = () => {
             position={[5, 10, 5]}
             intensity={12}
           />
-          <ambientLight intensity={10} />
+          {/* <ambientLight intensity={10} /> */}
           <spotLight
             position={[10, 10, 10]}
             intensity={2}
@@ -67,24 +79,20 @@ const HomeSection = () => {
             penumbra={1}
           />
           <pointLight position={[10, 10, 10]} intensity={2} />
-          <MechArm grab={grab} />
-          <OrbitControls enableZoom={false} />
-        </Canvas> */}
-        <video autoPlay loop muted>
+          <MechArm grab={grab} startLogoAnimation={startLogoAnimation}/>
+          {/* <OrbitControls enableZoom={false} /> */}
+        </Canvas>
+        {/* <video autoPlay loop muted>
           <source src={'./assets/videos/mechArmVideo.mp4'} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+        </video> */}
         {/* Logo (Positioned in front of the mech arm) */}
         <motion.div
-          className="absolute translate-x-250 translate-y-60  w-[300px] h-[300px] " // Overlay on top of Canvas
-          initial={{ x: 200, y: -150, scale: 1.2 }}
-          whileInView={{
-            y: grab ? 60 : -150,
-            x: grab ? 250 : 200,
-            scale: grab ? 1 : 1.2,
-          }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute w-[300px] h-[300px] " // Overlay on top of Canvas
+          initial={{ x: 250, y: 50, scale: 1.2 }}
+          animate={controls}
+          viewport={{ once: false }}
+          transition={{ duration: 2, ease: 'easeInOut' }}
         >
           <img
             src={"./assets/images/LOgo11.png"}
@@ -112,5 +120,6 @@ const HomeSection = () => {
     </section>
   );
 };
+
 
 export default HomeSection;

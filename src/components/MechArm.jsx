@@ -1,14 +1,17 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect , useState  } from "react";
 
-const MechArm = ({ grab }) => {
+
+const MechArm = ({ startLogoAnimation }) => {
   const { scene } = useGLTF("./assets/models/mech_arm_colored.glb");
   const armRef = useRef();
+  const [isAnimatingToGrab, setIsAnimatingToGrab] = useState(true);
+  const [isAnimating, setIsAnimating] = useState(true); 
 
   useEffect(() => {
-    armRef.current.position.set(-3.5, 0, -7); // Adjust initial position
-    armRef.current.rotation.set(0, -0.1, 0.5); // Adjust initial rotation
+    armRef.current.position.set(-7.5, 0, -7); // Adjust initial position
+    armRef.current.rotation.set(0, -1, 0.5); // Adjust initial rotation
 
     // Enable shadow on all meshes
     scene.traverse((child) => {
@@ -21,12 +24,34 @@ const MechArm = ({ grab }) => {
 
   // Animate the arm movement
   useFrame(() => {
-    if (grab) {
+    if (!armRef.current || !isAnimating) return;
+
+    const rotationZ = armRef.current.rotation.z;
+    const rotationY = armRef.current.rotation.y;
+
+    if (isAnimatingToGrab) {
       if (armRef.current.rotation.y < 0.3) armRef.current.rotation.y += 0.005;
       if (armRef.current.rotation.z > 0) armRef.current.rotation.z -= 0.005;
+      if (armRef.current.position.x < -3.5) armRef.current.position.x += 0.01;
+
+      // Check if the grab animation is complete
+      if (armRef.current.rotation.y >= 0.3 && armRef.current.rotation.z <= 0 && armRef.current.position.x >= -3.5) {
+        setIsAnimatingToGrab(false);
+        startLogoAnimation();
+      }
     } else {
       if (armRef.current.rotation.y > -0.1) armRef.current.rotation.y -= 0.005;
       if (armRef.current.rotation.z < 0.5) armRef.current.rotation.z += 0.005;
+      
+      if(armRef.current.rotation.y <= -0.1 && armRef.current.rotation.z >= 0.5){
+        setIsAnimating(false);
+        return;
+      }
+      
+      // Check if the release animation is complete
+      if (armRef.current.rotation.y <= -0.1 && armRef.current.rotation.z >= 0.5) {
+        setIsAnimatingToGrab(true);
+      }
     }
   });
 
