@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      screens: {
+        "2xl": "1720px", // Add your custom breakpoint
+      },
       colors: {
         primary: "#a71e1e",
         secondary: "text-linear-gradient(to right, #edf71f, #f18119)", // This makes `text-green` valid
