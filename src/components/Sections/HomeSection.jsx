@@ -53,7 +53,7 @@ const HomeSection = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
-          <img src="./assets/images/Arm1.png" className=""></img>
+          <img src="./assets/images/Arm2.png" className=""></img>
         </motion.div>
         <motion.div
           className="flex-1 relative w-[300px] h-[300px] mt-auto right-[8vw] bottom-[10vh] "
