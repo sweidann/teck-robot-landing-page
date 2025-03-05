@@ -1,4 +1,5 @@
 import React from "react";
+import { gearImage1 } from "../vars/vars";
 
 const GearsContainer = ({ gear2, gear3, gear4, rotation }) => {
   return (
@@ -6,7 +7,7 @@ const GearsContainer = ({ gear2, gear3, gear4, rotation }) => {
       className={`gears-container relative w-[500px] h-[500px] mx-auto ${rotation} `}
     >
       <img
-        src="./assets/images/Gear1.png"
+        src={gearImage1}
         className="absolute top-[-50px] left-[-50px] z-[200]"
       />
       <img src={gear2} className="absolute top-[40px] right-[-150px]" />

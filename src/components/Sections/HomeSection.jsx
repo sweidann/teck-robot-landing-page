@@ -4,6 +4,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useState, useEffect } from "react";
 import MechArm from "../MechArm";
 import GearsContainer from "../GearsContainer";
+import { gearImage2, gearImage3, gearImage4, homeArmImage, logoImage } from "../../vars/vars";
 
 const HomeSection = () => {
   const [grab, setGrab] = useState(true);
@@ -53,7 +54,7 @@ const HomeSection = () => {
           viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
-          <img src="./assets/images/Arm2.png" className=""></img>
+          <img src= {homeArmImage} className=""></img>
         </motion.div>
         <motion.div
           className="flex-1 relative w-[300px] h-[300px] mt-auto right-[8vw] bottom-[10vh] "
@@ -63,7 +64,7 @@ const HomeSection = () => {
           transition={{ duration: 0.8 }}
         >
           <img
-            src={"./assets/images/LOgo11.png"}
+            src={logoImage}
             alt={"Teck Robot"}
             className="w-full h-full object-cover"
           />
@@ -76,9 +77,9 @@ const HomeSection = () => {
         </motion.div>
         <div className="opacity-30 absolute top-20 right-[-15%]">
           <GearsContainer
-            gear2={"./assets/images/Gear2.png"}
-            gear3={"./assets/images/Gear3.png"}
-            gear4={"./assets/images/Gear4.png"}
+            gear2={gearImage2}
+            gear3={gearImage3}
+            gear4={gearImage4}
             // opacity={"opacity-50"}
             // position="absolute top-20 right-[-15%]"
             rotation={"rotate-[180deg]"}

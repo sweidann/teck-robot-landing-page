@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { sectionImage1,sectionImage2 , sectionImage3 , sectionImage4 } from "../../vars/vars";
 
 const ServiceItem = ({ image, description, isReversed }) => {
   return (
@@ -14,7 +15,7 @@ const ServiceItem = ({ image, description, isReversed }) => {
         transition={{ duration: 0.5 }}
         className="w-1/2 flex justify-center"
       >
-        <div className="w-[400px] h-[400px] border-secondary rounded-full">
+        <div className="w-[500px] h-[500px] border-secondary rounded-full">
           <img
             src={image}
             className="w-full h-full object-cover rounded-full"
@@ -39,19 +40,19 @@ const ServiceItem = ({ image, description, isReversed }) => {
 const ServicesSection = () => {
   const services = [
     {
-      image: "./assets/images/sectionImage1.jpg",
+      image: sectionImage1,
       description: "Project and feasibility studies",
     },
     {
-      image: "./assets/images/sectionImage2.jpg",
+      image: sectionImage2,
       description: "Hiring the Right Robot",
     },
     {
-      image: "./assets/images/sectionImage3.jpg",
+      image: sectionImage3,
       description: "Installation and integration",
     },
     {
-      image: "./assets/images/sectionImage4.jpg",
+      image: sectionImage4,
       description: "Technical Support and Maintenance",
     },
   ];
