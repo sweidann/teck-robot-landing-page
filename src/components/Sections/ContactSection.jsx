@@ -26,7 +26,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-6 flex">
         <img
           src={contactArmImage}
-          className="w-1/2 h-[700px] pr-[100px]"
+          className="w-1/2 h-[700px] 2xl:h-[900px] pr-[100px]"
         />
         <motion.div
           initial={{ opacity: 0, y: 50 }}

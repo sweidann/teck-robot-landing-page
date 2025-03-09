@@ -1,25 +1,37 @@
-import { motion, useAnimation } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { motion, useAnimation , useScroll , useTransform} from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import MechArm from "../MechArm";
 import GearsContainer from "../GearsContainer";
 import { gearImage2, gearImage3, gearImage4, homeArmImage, logoImage } from "../../vars/vars";
-import ReactPlayer from "react-player";
 import VideoPlayer from "../VideoPlayer";
 
 const HomeSection = () => {
-  const [grab, setGrab] = useState(true);
-  const [audio, setAudio] = useState(null);
-  const sectionRef = useRef(null);
-  const [armPosition, setArmPosition] = useState({ x: 0, y: 0, z: -7 }); // Initial position
+  const { scrollYProgress } = useScroll();
   const controls = useAnimation();
+
+  // Create responsive values based on viewport width
+  const xRange = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["20vw", "30vw"] // Using viewport width units
+  );
+
+  const yRange = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["30vh", "15vh"] // Using viewport height units
+  );
+
+  console.log(yRange);
 
   const startLogoAnimation = () => {
     controls.start({
-      x: [200 , 270 , 290], // Start at -800, go to 250, then to 200
-      y: [250 , 200 , 150], // Start at 0, stay at 0, then go to -150
-      transition: { delay : 1.5 , duration: 1, ease: "easeInOut" }, // Adjust duration as needed
+      x: ["15vw" , "17vw" , "19vw"],
+      y: ["35vh" , "25vh" , "20vh"],
+      transition: { 
+        delay: 1.4, 
+        duration: 1, 
+        // ease: "easeInOut" 
+      },
     });
   };
 
@@ -54,8 +66,8 @@ const HomeSection = () => {
           />
         </div>
         <motion.div
-          className="absolute w-[300px] h-[300px] " // Overlay on top of Canvas
-          initial={{ x: 200, y: 250, scale: 2 }}
+          className="absolute w-[20vw] h-[20vw] " // Overlay on top of Canvas
+          initial={{ x: "15vw", y: "35vh", scale: 2 }}
           animate={controls}
           viewport={{ once: false }}
           transition={{ duration: 2, ease: 'easeInOut' }}
@@ -67,7 +79,7 @@ const HomeSection = () => {
               className="w-full h-full object-cover "
             />
             <p
-              className="text-l font-black text-center text-secondary absolute bottom-[4vh] 2xl:bottom-[-5vh] right-[70px]"
+              className="text-l font-black text-center text-secondary absolute bottom-[4vh] 2xl:bottom-[5vh] right-[70px]"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               RENT A ROBOT
