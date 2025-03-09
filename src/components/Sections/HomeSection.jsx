@@ -79,6 +79,9 @@ const HomeSection = () => {
             gear2={gearImage2}
             gear3={gearImage3}
             gear4={gearImage4}
+            gear2={gearImage2}
+            gear3={gearImage3}
+            gear4={gearImage4}
             // opacity={"opacity-50"}
             // position="absolute top-20 right-[-15%]"
             rotation={"rotate-[180deg]"}
