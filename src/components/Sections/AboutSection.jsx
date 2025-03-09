@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import GearsContainer from "../GearsContainer";
+import { gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
 
 const AboutSection = () => {
   return (
@@ -13,9 +14,9 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <GearsContainer
-              gear2={"./assets/images/Gear2.png"}
-              gear3={"./assets/images/Gear3.png"}
-              gear4={"./assets/images/Gear4.png"}
+              gear2={gearImage2}
+              gear3={gearImage3}
+              gear4={gearImage4}
             />
           </motion.div>
           <motion.div
