@@ -1,5 +1,5 @@
 import { motion , useAnimation , useInView} from "framer-motion";
-import { useEffect , useRef } from "react";
+import { useEffect , useRef, useState } from "react";
 import { sectionImage1,sectionImage2 , sectionImage3 , sectionImage4 } from "../../vars/vars";
 import VideoPlayer from "../VideoPlayer";
 
@@ -65,24 +65,34 @@ const ServicesSection = () => {
   const controls = useAnimation();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true });
-  // let hasPlayed = false;
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [xValues , setXValues] = useState([]);
+  const [yValues , setYValues] = useState( []);
 
-  // const startTitleAnimation = () => {
-  //   controls.start({
-  //     x: ["0vw","-2vw" ,"-1vw" , "0vw" , "5vw" , "0vw" ],
-  //     y: ["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"],
-  //     transition: { 
-  //       delay: 0.6,
-  //       duration: 2.1,
-  //     },
-  //   });
-  // };
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setScreenWidth(width);
+      
+      if (width > 1536) { // 2xl breakpoint
+        setXValues(["9vw", "7vw", "8vw", "9vw", "14vw", "9vw"]);
+        setYValues(["-23vh","-13vh", "-11vh" ,"-3vh" , "7vh" , "-6vh"]);
+      } else  { // xl breakpoint
+        setXValues(["0vw", "-2vw", "-1vw", "0vw", "5vw", "0vw"]);
+        setYValues(["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"]);
+      } 
+    };
+
+    handleResize(); // Set initial values
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  } , []);
 
   useEffect(() => {
     if (isInView ) {
       controls.start({
-        x: ["0vw","-2vw" ,"-1vw" , "0vw" , "5vw" , "0vw"],
-        y: ["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"],
+        x: xValues,
+        y: yValues,
         transition: { 
           delay: 0.6,
           duration: 2.0,
@@ -99,7 +109,7 @@ const ServicesSection = () => {
         <motion.h2
           className="text-4xl font-black text-center mb-16 text-white mr-[250px]"
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          initial={{ x: "0vw", y: "-25vh"}}
+          initial={{ x: xValues[0], y: yValues[0]}}
           animate={controls}
           viewport={{ once: true }}
         >
