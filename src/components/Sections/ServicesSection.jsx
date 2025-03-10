@@ -1,7 +1,12 @@
-import { motion } from "framer-motion";
+import { motion , useAnimation , useInView} from "framer-motion";
+import { useEffect , useRef } from "react";
 import { sectionImage1,sectionImage2 , sectionImage3 , sectionImage4 } from "../../vars/vars";
+import VideoPlayer from "../VideoPlayer";
 
 const ServiceItem = ({ image, description, isReversed }) => {
+  
+
+
   return (
     <div
       className={`flex items-center gap-12 ${
@@ -57,15 +62,64 @@ const ServicesSection = () => {
     },
   ];
 
+  const controls = useAnimation();
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true });
+  // let hasPlayed = false;
+
+  // const startTitleAnimation = () => {
+  //   controls.start({
+  //     x: ["0vw","-2vw" ,"-1vw" , "0vw" , "5vw" , "0vw" ],
+  //     y: ["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"],
+  //     transition: { 
+  //       delay: 0.6,
+  //       duration: 2.1,
+  //     },
+  //   });
+  // };
+
+  useEffect(() => {
+    if (isInView ) {
+      controls.start({
+        x: ["0vw","-2vw" ,"-1vw" , "0vw" , "5vw" , "0vw"],
+        y: ["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"],
+        transition: { 
+          delay: 0.6,
+          duration: 2.0,
+        },
+      });
+
+      
+    }
+  }, [isInView, controls]);
+
   return (
-    <section id="services" className="min-h-screen py-20">
-      <div className="container mx-auto px-6">
-        <h2
-          className="text-4xl font-black text-center mb-16 text-white"
+    <section id="services" ref={sectionRef} className="min-h-screen py-20 mt-[200px]">
+      <div className="container mx-auto px-6 relative">
+        <motion.h2
+          className="text-4xl font-black text-center mb-16 text-white mr-[250px]"
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          initial={{ x: "0vw", y: "-25vh"}}
+          animate={controls}
+          viewport={{ once: true }}
         >
           Our Services
-        </h2>
+        </motion.h2>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        ></motion.div>
+          <VideoPlayer 
+            url={"./assets/videos/armMoveRight.mp4"} 
+            style={{
+              position: "absolute", 
+              right: -150, 
+              top: -350, 
+              zIndex: -100
+            }}
+            playing={isInView } // Video will only play when in view
+          />
         <div className="space-y-24">
           {services.map((service, index) => (
             <ServiceItem

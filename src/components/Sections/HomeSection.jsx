@@ -61,6 +61,7 @@ const HomeSection = () => {
         >
           <VideoPlayer 
             url="./assets/videos/armMoveLeft.mp4" // Ensure it's placed in the 'public/assets/videos' folder
+            style={{ width: "100%",height : "100%" , position : "absolute" ,  margin: "auto" , left: "-30vw", top : "-10vh"}}
             controls 
             playing={true} // Set to true if you want autoplay
           />

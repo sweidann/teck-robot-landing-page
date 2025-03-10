@@ -1,11 +1,11 @@
 import ReactPlayer from "react-player";
 
-const VideoPlayer = ({url}) => {
+const VideoPlayer = ({url , style , playing}) => {
   return (
-    <div style={{ width: "100%",height : "100%" , position : "absolute" ,  margin: "auto" , left: "-30vw", top : "-10vh"}}>
+    <div style={style}>
       <ReactPlayer 
         url={url}
-        playing
+        playing = {playing}
         muted 
         width="100%" 
         height="100%"
