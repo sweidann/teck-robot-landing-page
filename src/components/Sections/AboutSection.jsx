@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../../context/LanguageContext";
 import GearsContainer from "../GearsContainer";
-import { gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
+import {gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
 
 const AboutSection = () => {
   const { t } = useLanguage();

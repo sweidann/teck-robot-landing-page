@@ -15,7 +15,7 @@ const gearImage2 = assetsPath + "images/Gear2.png";
 const gearImage3 = assetsPath + "images/Gear3.png";
 const gearImage4 = assetsPath + "images/Gear4.png";
 
-const fanucImage = assetsPath + "images/fanuc.jpg";
+const fanucImage = assetsPath + "images/FANUCSolid.png";
 
 const contactArmImage = assetsPath + "images/ContactArm.png";
 

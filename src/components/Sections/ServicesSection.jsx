@@ -2,7 +2,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import PropTypes from 'prop-types';
 import { useLanguage } from "../../context/LanguageContext";
-import { sectionImage1, sectionImage2, sectionImage3, sectionImage4 } from "../../vars/vars";
+import { fanucImage, sectionImage1, sectionImage2, sectionImage3, sectionImage4 } from "../../vars/vars";
 import VideoPlayer from "../VideoPlayer";
 
 const ServiceItem = ({ image, description, isReversed }) => {
@@ -133,7 +133,8 @@ const ServicesSection = () => {
           }}
           playing={isInView}
         />
-        <div className="space-y-40 mt-[50vh]">
+        <div className="space-y-40 mt-[70vh]">
+          <img src={fanucImage}></img>
           {services.map((service, index) => (
             <ServiceItem
               key={index}

@@ -2,9 +2,9 @@ export const translations = {
   en: {
     nav: {
       home: "Home",
-      about: "About us",
-      services: "Our services",
-      contact: "Contact us"
+      about: "About Us",
+      services: "Our Services",
+      contact: "Contact Us"
     },
     hero: {
       title: "TECH ROBOT: Rent a robot"
@@ -14,7 +14,7 @@ export const translations = {
       mission: "Our Mission is to assist you towards the robotization of your projects."
     },
     services: {
-      title: "Our services",
+      title: "Our Services",
       items: [
         "Project and feasibility studies",
         "Hiring the Right Robot",
