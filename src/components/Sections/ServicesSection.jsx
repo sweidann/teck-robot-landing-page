@@ -80,8 +80,8 @@ const ServicesSection = () => {
       const width = window.innerWidth;
       
       if (width > 1536) {
-        setXValues(["9vw", "7vw", "8vw", "9vw", "14vw", "9vw"]);
-        setYValues(["-23vh","-13vh", "-11vh" ,"-3vh" , "7vh" , "-6vh"]);
+        setXValues(["10vw", "8vw", "9vw", "10vw", "15vw", "10vw"]);
+        setYValues(["10vh","18vh", "28vh" ,"38vh" , "38vh" , "28vh"]);
       } else {
         setXValues(["0vw", "-2vw", "-1vw", "0vw", "5vw", "0vw"]);
         setYValues(["15vh","25vh", "30vh" ,"40vh" , "50vh" , "32vh"]);
