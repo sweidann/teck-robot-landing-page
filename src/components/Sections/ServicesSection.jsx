@@ -1,12 +1,11 @@
-import { motion , useAnimation , useInView} from "framer-motion";
-import { useEffect , useRef, useState } from "react";
-import { sectionImage1,sectionImage2 , sectionImage3 , sectionImage4 } from "../../vars/vars";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import PropTypes from 'prop-types';
+import { useLanguage } from "../../context/LanguageContext";
+import { sectionImage1, sectionImage2, sectionImage3, sectionImage4 } from "../../vars/vars";
 import VideoPlayer from "../VideoPlayer";
 
 const ServiceItem = ({ image, description, isReversed }) => {
-  
-
-
   return (
     <div
       className={`flex items-center gap-12 ${
@@ -42,54 +41,60 @@ const ServiceItem = ({ image, description, isReversed }) => {
   );
 };
 
+ServiceItem.propTypes = {
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  isReversed: PropTypes.bool.isRequired,
+};
+
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
       image: sectionImage1,
-      description: "Project and feasibility studies",
+      description: t("services.items.0"),
     },
     {
       image: sectionImage2,
-      description: "Hiring the Right Robot",
+      description: t("services.items.1"),
     },
     {
       image: sectionImage3,
-      description: "Installation and integration",
+      description: t("services.items.2"),
     },
     {
       image: sectionImage4,
-      description: "Technical Support and Maintenance",
+      description: t("services.items.3"),
     },
   ];
 
   const controls = useAnimation();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const [xValues , setXValues] = useState([]);
-  const [yValues , setYValues] = useState( []);
+  const [xValues, setXValues] = useState([]);
+  const [yValues, setYValues] = useState([]);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      setScreenWidth(width);
       
-      if (width > 1536) { // 2xl breakpoint
+      if (width > 1536) {
         setXValues(["9vw", "7vw", "8vw", "9vw", "14vw", "9vw"]);
         setYValues(["-23vh","-13vh", "-11vh" ,"-3vh" , "7vh" , "-6vh"]);
-      } else  { // xl breakpoint
+      } else {
         setXValues(["0vw", "-2vw", "-1vw", "0vw", "5vw", "0vw"]);
-        setYValues(["-25vh","-15vh", "-13vh" ,"-5vh" , "5vh" , "-8vh"]);
+        setYValues(["15vh","25vh", "30vh" ,"40vh" , "50vh" , "32vh"]);
       } 
     };
 
-    handleResize(); // Set initial values
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  } , []);
+  }, []);
 
   useEffect(() => {
-    if (isInView ) {
+    if (isInView) {
       controls.start({
         x: xValues,
         y: yValues,
@@ -98,13 +103,11 @@ const ServicesSection = () => {
           duration: 2.0,
         },
       });
-
-      
     }
-  }, [isInView, controls]);
+  }, [isInView, controls, xValues, yValues]);
 
   return (
-    <section id="services" ref={sectionRef} className="min-h-screen py-20 mt-[200px]">
+    <section id="services" ref={sectionRef} className="min-h-screen py-20">
       <div className="container mx-auto px-6 relative">
         <motion.h2
           className="text-4xl font-black text-center mb-16 text-white mr-[250px]"
@@ -113,24 +116,24 @@ const ServicesSection = () => {
           animate={controls}
           viewport={{ once: true }}
         >
-          Our Services
+          {t("services.title")}
         </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5 }}
         ></motion.div>
-          <VideoPlayer 
-            url={"./assets/videos/armMoveRight.mp4"} 
-            style={{
-              position: "absolute", 
-              right: -150, 
-              top: -350, 
-              zIndex: -100
-            }}
-            playing={isInView } // Video will only play when in view
-          />
-        <div className="space-y-24">
+        <VideoPlayer 
+          url={"./assets/videos/armMoveRight.mp4"} 
+          style={{
+            position: "absolute", 
+            right: -150, 
+            top: -50, 
+            zIndex: -100
+          }}
+          playing={isInView}
+        />
+        <div className="space-y-40 mt-[50vh]">
           {services.map((service, index) => (
             <ServiceItem
               key={index}

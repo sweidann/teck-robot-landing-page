@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
+import { useLanguage } from "../../context/LanguageContext";
 import GearsContainer from "../GearsContainer";
 import { gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="min-h-screen py-20">
       <div className="container mx-auto px-6">
@@ -29,11 +32,10 @@ const AboutSection = () => {
               className="text-4xl font-black text-left mb-16 text-white"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
-              About Us
+              {t("about.title")}
             </h2>
             <p className="text-[40px] w-3/4 text-white font-black">
-              Our Mission is to assist you towards the robotization of your
-              projects.
+              {t("about.mission")}
             </p>
           </motion.div>
         </div>

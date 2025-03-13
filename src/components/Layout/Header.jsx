@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
+import { useLanguage } from "../../context/LanguageContext";
+import { LanguageToggle } from "../LanguageToggle";
 // import Link from 'next/link';
 
 const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useLanguage();
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About Us" },
-    { id: "services", label: "Our Services" },
-    { id: "contact", label: "Contact Us" },
+    { id: "home", label: t("nav.home") },
+    { id: "about", label: t("nav.about") },
+    { id: "services", label: t("nav.services") },
+    { id: "contact", label: t("nav.contact") },
   ];
 
   const scrollToSection = (sectionId) => {
@@ -47,7 +50,7 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navItems]);
 
   return (
     <header
@@ -66,7 +69,7 @@ const Header = () => {
             className="h-20"
           />
         </div>
-        <nav>
+        <nav className="flex items-center gap-8">
           <ul className="flex gap-20">
             {navItems.map((item) => (
               <li key={item.id}>
@@ -84,6 +87,7 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <LanguageToggle />
         </nav>
       </div>
     </header>

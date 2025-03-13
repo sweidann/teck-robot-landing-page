@@ -15,10 +15,12 @@ const gearImage2 = assetsPath + "images/Gear2.png";
 const gearImage3 = assetsPath + "images/Gear3.png";
 const gearImage4 = assetsPath + "images/Gear4.png";
 
+const fanucImage = assetsPath + "images/fanuc.jpg";
+
 const contactArmImage = assetsPath + "images/ContactArm.png";
 
 export { sectionImage1, sectionImage2, sectionImage3, sectionImage4 , homeArmImage , logoImage};
 
-export {gearImage1 , gearImage2 , gearImage3 ,gearImage4 };
+export {gearImage1 , gearImage2 , gearImage3 ,gearImage4 , fanucImage};
 
 export {contactArmImage};

@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import PropTypes from 'prop-types';
+import { useLanguage } from "../../context/LanguageContext";
 import { contactArmImage } from "../../vars/vars";
 
 const InputField = ({ label }) => (
@@ -14,12 +16,23 @@ const InputField = ({ label }) => (
   </div>
 );
 
+InputField.propTypes = {
+  label: PropTypes.string.isRequired,
+};
+
 const ContactSection = () => {
+  const { t } = useLanguage();
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const fields = ["Name", "Company Name", "Email", "Phone Number"];
+  const fields = [
+    { key: "name", label: t("contact.name") },
+    { key: "company", label: t("contact.company") },
+    { key: "email", label: t("contact.email") },
+    { key: "phone", label: t("contact.phone") },
+  ];
 
   return (
     <section id="contact" className="min-h-screen py-20">
@@ -39,21 +52,21 @@ const ContactSection = () => {
             className="text-4xl font-black text-center mb-16 text-white"
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
-            Contact Us
+            {t("contact.title")}
           </h2>
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
             <div className="grid grid-cols-2 gap-8">
               {fields.map((field) => (
-                <InputField key={field} label={field} />
+                <InputField key={field.key} label={field.label} />
               ))}
             </div>
 
             <div className="relative">
               <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-sm font-semibold">
-                Describe Your Project
+                {t("contact.project")}
               </label>
               <textarea
-                placeholder="Describe your project"
+                placeholder={t("contact.project")}
                 rows={6}
                 className="w-full px-4 py-3 bg-transparent border border-white rounded-[20px] text-white placeholder-transparent focus:outline-none focus:ring-0"
               ></textarea>
@@ -61,9 +74,9 @@ const ContactSection = () => {
             <div className="w-full flex justify-end">
               <button
                 type="submit"
-                className=" bg-[var(--yellow-color)] text-white p-5 m-left-auto rounded-lg  transition-colors shadow-lg"
+                className="bg-[var(--yellow-color)] text-white p-5 m-left-auto rounded-lg transition-colors shadow-lg"
               >
-                Send Message
+                {t("contact.submit")}
               </button>
             </div>
           </form>
