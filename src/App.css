@@ -25,6 +25,11 @@ section > .container {
   padding-top: 80px;
 }
 
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 video {
   pointer-events: none !important;
   -webkit-user-select: none !important;
