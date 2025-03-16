@@ -81,9 +81,9 @@ const ServicesSection = () => {
       
       if (width > 1536) {
         setXValues(["10vw", "8vw", "9vw", "10vw", "15vw", "10vw"]);
-        setYValues(["10vh","18vh", "28vh" ,"38vh" , "38vh" , "28vh"]);
+        setYValues(["10vh","16vh", "24vh" ,"34vh" , "34vh" , "26vh"]);
       } else {
-        setXValues(["0vw", "-2vw", "-1vw", "0vw", "5vw", "0vw"]);
+        setXValues(["-2vw", "-4vw", "-3vw", "-2vw", "3vw", "-2vw"]);
         setYValues(["15vh","25vh", "30vh" ,"40vh" , "50vh" , "32vh"]);
       } 
     };
@@ -100,7 +100,7 @@ const ServicesSection = () => {
         y: yValues,
         transition: { 
           delay: 0.6,
-          duration: 2.0,
+          duration: 1.9,
         },
       });
     }
@@ -110,7 +110,7 @@ const ServicesSection = () => {
     <section id="services" ref={sectionRef} className="min-h-screen py-20">
       <div className="container mx-auto px-6 relative">
         <motion.h2
-          className="text-4xl font-black text-center mb-16 text-white mr-[250px]"
+          className="text-5xl font-black text-center mb-16 text-white mr-[250px]"
           style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           initial={{ x: xValues[0], y: yValues[0]}}
           animate={controls}

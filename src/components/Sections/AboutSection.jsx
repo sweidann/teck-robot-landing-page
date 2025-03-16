@@ -29,7 +29,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2
-              className="text-4xl font-black text-left mb-16 text-white"
+              className="text-5xl font-black text-left mb-16 text-white"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("about.title")}
