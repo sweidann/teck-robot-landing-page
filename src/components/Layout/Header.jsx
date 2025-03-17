@@ -77,8 +77,8 @@ const Header = () => {
                   onClick={() => scrollToSection(item.id)}
                   className={`text-lg font-black text-center ${
                     activeSection === item.id
-                      ? "text-secondary"
-                      : "text-white hover:text-secondary"
+                      ? "text-[var(--yellow-color)]"
+                      : "text-white hover:text-[var(--yellow-color)]"
                   }`}
                   style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
                 >

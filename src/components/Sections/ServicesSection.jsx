@@ -108,32 +108,26 @@ const ServicesSection = () => {
 
   return (
     <section id="services" ref={sectionRef} className="min-h-screen py-20">
-      <div className="container mx-auto px-6 relative">
-        <motion.h2
-          className="text-5xl font-black text-center mb-16 text-white mr-[250px]"
-          style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-          initial={{ x: xValues[0], y: yValues[0]}}
-          animate={controls}
-          viewport={{ once: true }}
-        >
-          {t("services.title")}
-        </motion.h2>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5 }}
-        ></motion.div>
-        <VideoPlayer 
-          url={"./assets/videos/armMoveRight.mp4"} 
-          style={{
-            position: "absolute", 
-            right: -150, 
-            top: -50, 
-            zIndex: -100
-          }}
-          playing={isInView}
-        />
-        <div className="space-y-40 mt-[70vh]">
+      <div className="container mx-auto px-6 relative flex flex-col">
+          <div className="flex items-center justify-start flex absolute top-[40vh]">
+            <h2
+              className="text-5xl font-black text-center text-white ml-[10vw]"
+              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+            >
+              {t("services.title")}
+            </h2>
+          </div>
+          <VideoPlayer 
+            url={"./assets/videos/armMoveRight.mp4"} 
+            style={{
+              position: "absolute", 
+              right: -150, 
+              top: -50, 
+              zIndex: -100
+            }}
+            playing={isInView}
+          />
+        <div className="space-y-40 mt-[80vh]">
           <img src={fanucImage}></img>
           {services.map((service, index) => (
             <ServiceItem

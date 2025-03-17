@@ -52,7 +52,7 @@ const HomeSection = () => {
               className="w-full h-full object-cover"
             />
             <p
-              className="text-l font-black text-center text-secondary absolute bottom-[4vh] 2xl:bottom-[5vh] right-[70px]"
+              className="text-l font-black text-center text-[var(--yellow-color)] absolute bottom-[4vh] 2xl:bottom-[5vh] right-[70px]"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("hero.title").split(":")[1].trim()}
