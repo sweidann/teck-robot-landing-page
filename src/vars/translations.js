@@ -36,7 +36,7 @@ export const translations = {
     },
     languages: {
       en: "English",
-      fr: "French"
+      fr: "Français"
     }
   },
   fr: {
@@ -75,7 +75,7 @@ export const translations = {
       rights: "Tous droits réservés."
     },
     languages: {
-      en: "Anglais",
+      en: "English",
       fr: "Français"
     }
   }

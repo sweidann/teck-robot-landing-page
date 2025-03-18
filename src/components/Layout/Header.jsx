@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { LanguageToggle } from "../LanguageToggle";
+import { logo } from "../../vars/vars";
 // import Link from 'next/link';
 
 const Header = () => {
@@ -64,7 +65,7 @@ const Header = () => {
       <div className="container mx-auto px-10 py-4 flex justify-between items-center">
         <div className="logo">
           <img
-            src="./assets/images/Logo+gear.png"
+            src={logo}
             alt="Logo"
             className="h-20"
           />

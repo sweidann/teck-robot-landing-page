@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import PropTypes from 'prop-types';
 import { useLanguage } from "../../context/LanguageContext";
-import { contactArmImage } from "../../vars/vars";
+import { contactArmImage, fanucImage, logo } from "../../vars/vars";
 
 const InputField = ({ label }) => (
   <div className="relative w-[300px]">
@@ -35,7 +35,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20">
+    <section id="contact" className="min-h-screen py-10">
       <div className="container mx-auto px-6 flex">
         <img
           src={contactArmImage}
@@ -80,6 +80,26 @@ const ContactSection = () => {
               </button>
             </div>
           </form>
+        </motion.div>
+      </div>
+      <div className="flex items-center gap-12 h-[40vh]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+          className="w-1/2 h-full flex justify-center"
+        >
+          <img className="" src={fanucImage}></img>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.5 }}
+          className={`w-1/2 h-full flex justify-center`}
+        >
+          <img src={logo}></img>
         </motion.div>
       </div>
     </section>

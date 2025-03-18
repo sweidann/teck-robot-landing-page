@@ -128,7 +128,6 @@ const ServicesSection = () => {
             playing={isInView}
           />
         <div className="space-y-40 mt-[80vh]">
-          <img src={fanucImage}></img>
           {services.map((service, index) => (
             <ServiceItem
               key={index}
