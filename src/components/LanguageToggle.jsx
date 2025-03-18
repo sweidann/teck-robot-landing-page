@@ -20,13 +20,15 @@ export const LanguageToggle = () => {
   const languages = [
     { 
       code: 'en', 
-      flagClass: 'fi fi-us', 
-      name: t('languages.en') 
+      flagClass: 'fi fi-ca', 
+      name: t('languages.en'),
+      label: 'EN'
     },
     { 
       code: 'fr', 
-      flagClass: 'fi fi-fr', 
-      name: t('languages.fr') 
+      flagClass: 'fi fi-ca', 
+      name: t('languages.fr'),
+      label: 'FR'
     }
   ];
 
@@ -39,6 +41,7 @@ export const LanguageToggle = () => {
         className="flex items-center gap-2 px-3 py-1 rounded-md border border-white text-white hover:bg-white/10 transition-colors"
       >
         <span className={`${currentLanguage.flagClass} text-xl`}></span>
+        <span className="ml-1 text-sm opacity-75">({currentLanguage.label})</span>
         <svg
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
