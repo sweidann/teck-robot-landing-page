@@ -1,8 +1,14 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
-import { fanucImage, sectionImage1, sectionImage2, sectionImage3, sectionImage4 } from "../../vars/vars";
+import {
+  fanucImage,
+  sectionImage1,
+  sectionImage2,
+  sectionImage3,
+  sectionImage4,
+} from "../../vars/vars";
 import VideoPlayer from "../VideoPlayer";
 
 const ServiceItem = ({ image, description, isReversed }) => {
@@ -80,19 +86,19 @@ const ServicesSection = () => {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      
+
       if (width > 1536) {
         setXValues(["10vw", "8vw", "9vw", "10vw", "15vw", "10vw"]);
-        setYValues(["10vh","16vh", "24vh" ,"34vh" , "34vh" , "26vh"]);
+        setYValues(["10vh", "16vh", "24vh", "34vh", "34vh", "26vh"]);
       } else {
         setXValues(["-2vw", "-4vw", "-3vw", "-2vw", "3vw", "-2vw"]);
-        setYValues(["15vh","25vh", "30vh" ,"40vh" , "50vh" , "32vh"]);
-      } 
+        setYValues(["15vh", "25vh", "30vh", "40vh", "50vh", "32vh"]);
+      }
     };
 
     handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -100,7 +106,7 @@ const ServicesSection = () => {
       controls.start({
         x: xValues,
         y: yValues,
-        transition: { 
+        transition: {
           delay: 0.6,
           duration: 1.9,
         },
@@ -109,26 +115,30 @@ const ServicesSection = () => {
   }, [isInView, controls, xValues, yValues]);
 
   return (
-    <section id="services" ref={sectionRef} className="min-h-screen py-10 md:py-20">
+    <section
+      id="services"
+      ref={sectionRef}
+      className="min-h-screen py-10 md:py-20"
+    >
       <div className="container mx-auto px-4 md:px-6 relative flex flex-col">
-          <div className="flex items-center justify-center md:justify-start flex absolute top-[20vh] md:top-[40vh] w-full md:w-auto">
-            <h2
-              className="text-4xl md:text-5xl font-black text-center text-white md:ml-[10vw]"
-              style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
-            >
-              {t("services.title")}
-            </h2>
-          </div>
-          <VideoPlayer 
-            url={"./assets/videos/armMoveRight.mp4"} 
-            style={{
-              position: "absolute", 
-              right: -150, 
-              top: -50, 
-              zIndex: -100
-            }}
-            playing={isInView}
-          />
+        <div className="flex items-center justify-start flex absolute top-[30vh] md:top-[40vh] w-full md:w-auto">
+          <h2
+            className="text-4xl md:text-5xl font-black text-center ml-10 text-white md:ml-[10vw]"
+            style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
+          >
+            {t("services.title")}
+          </h2>
+        </div>
+        <VideoPlayer
+          url={"./assets/videos/armMoveRight.mp4"}
+          style={{
+            position: "absolute",
+            right: -150,
+            top: -50,
+            zIndex: -100,
+          }}
+          playing={isInView}
+        />
         <div className="space-y-20 md:space-y-40 mt-[40vh] md:mt-[80vh]">
           {services.map((service, index) => (
             <ServiceItem

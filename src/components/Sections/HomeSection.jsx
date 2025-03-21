@@ -17,8 +17,8 @@ const HomeSection = () => {
       const width = window.innerWidth;
 
       if (width < 767) {
-        setXValues(["15vw", "17vw", "19vw"]);
-        setYValues(["0px", "20px", "30px"]);
+        setXValues(["20vw", "27vw", "29vw"]);
+        setYValues(["0px", "-40px", "-45px"]);
       } else {
         setXValues(["15vw", "17vw", "19vw"]);
         setYValues(["35vh", "25vh", "20vh"]);
@@ -71,7 +71,7 @@ const HomeSection = () => {
           />
         </div>
         <motion.div
-          className="absolute w-[20vw] h-[20vw]"
+          className="absolute w-[30vw] md:w-[20vw] h-[20vw]"
           initial={{ x: "15vw", y: "35vh", scale: 2 }}
           animate={controls}
           viewport={{ once: false }}
@@ -84,14 +84,14 @@ const HomeSection = () => {
               className="w-full h-full object-cover"
             />
             <p
-              className="text-[8px] text-nowrap md:text-lg font-black text-center text-[var(--yellow-color)] absolute bottom-[4vh] 2xl:bottom-[5vh] right-[70px]"
+              className="text-[8px] text-nowrap md:text-lg font-black text-center text-[var(--yellow-color)] absolute bottom-[10px] right-[25px] md:bottom-[4vh] 2xl:bottom-[5vh] md:right-[70px]"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("hero.title").split(":")[1].trim()}
             </p>
           </div>
         </motion.div>
-        <div className="opacity-30 absolute top-10 md:top-20 right-[-20%] md:right-[-15%] ">
+        <div className="opacity-30 absolute top-10 right-[-30%] md:top-20 right-[-20%] md:right-[-15%] ">
           <GearsContainer
             gear2={gearImage2}
             gear3={gearImage3}

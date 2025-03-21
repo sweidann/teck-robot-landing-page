@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "../../context/LanguageContext";
 import GearsContainer from "../GearsContainer";
-import {gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
+import { gearImage2, gearImage3, gearImage4 } from "../../vars/vars";
 import { useEffect, useState } from "react";
 
 const AboutSection = () => {
@@ -53,7 +53,7 @@ const AboutSection = () => {
             >
               {t("about.title")}
             </h2>
-            <p className="text-xl w-full md:leading-custom md:text-[40px] w-3/4 text-white font-black">
+            <p className="text-lg w-full md:leading-custom md:text-[40px] w-3/4 text-white font-black">
               {t("about.mission")}
             </p>
           </motion.div>

@@ -46,9 +46,12 @@ video {
 /* Mobile Specific Styles */
 @media (max-width: 767px) {
   .gears-container {
-    transform: scale(0.6);
     width: 300px;
     height: 300px;
+  }
+
+  #about .gears-container {
+    transform: scale(0.6);
   }
 
   .border-secondary {
