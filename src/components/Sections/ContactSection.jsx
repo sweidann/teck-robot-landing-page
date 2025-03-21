@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
 import { contactArmImage, fanucImage, logo } from "../../vars/vars";
 
 const InputField = ({ label }) => (
   <div className="relative w-[300px]">
-    <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-sm font-semibold">
+    <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-xs md:text-sm font-semibold">
       {label}
     </label>
     <input
@@ -36,20 +36,20 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="min-h-screen py-10">
-      <div className="container mx-auto px-6 flex">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row">
         <img
           src={contactArmImage}
-          className="w-1/2 h-[700px] 2xl:h-[900px] pr-[100px]"
+          className="w-full md:w-1/2 h-[400px] md:h-[700px] 2xl:h-[900px] md:pr-[100px] mb-8 md:mb-0"
         />
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="w-1/2 flex flex-col justify-center"
+          className="w-full md:w-1/2 flex flex-col justify-center"
         >
           <h2
-            className="text-5xl font-black text-center mb-16 text-white"
+            className="text-3xl md:text-5xl font-black text-center mb-8 md:mb-16 text-white"
             style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
           >
             {t("contact.title")}
@@ -74,7 +74,7 @@ const ContactSection = () => {
             <div className="w-full flex justify-end">
               <button
                 type="submit"
-                className="bg-[var(--yellow-color)] text-white p-5 m-left-auto rounded-lg transition-colors shadow-lg"
+                className="bg-[var(--yellow-color)] text-white text-sm md:text-base p-3 md:p-5 m-left-auto rounded-lg transition-colors shadow-lg"
               >
                 {t("contact.submit")}
               </button>

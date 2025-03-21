@@ -1,13 +1,13 @@
 import ReactPlayer from "react-player";
 
-const VideoPlayer = ({url , style , playing}) => {
+const VideoPlayer = ({ url, style, playing }) => {
   return (
-    <div style={style}>
-      <ReactPlayer 
+    <div style={style} className="videoContainer">
+      <ReactPlayer
         url={url}
-        playing = {playing}
-        muted 
-        width="100%" 
+        playing={playing}
+        muted
+        width="100%"
         height="100%"
         playsinline
         pip={false}
@@ -15,11 +15,11 @@ const VideoPlayer = ({url , style , playing}) => {
         config={{
           file: {
             attributes: {
-              controlsList: 'nodownload',
+              controlsList: "nodownload",
               disablePictureInPicture: true,
-              onContextMenu: e => e.preventDefault()
-            }
-          }
+              onContextMenu: (e) => e.preventDefault(),
+            },
+          },
         }}
       />
     </div>

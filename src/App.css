@@ -2,10 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
-html{
-    width: 100%;
-    overflow-x: hidden;
+html {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -22,7 +21,13 @@ body {
 }
 
 section > .container {
-  padding-top: 80px;
+  padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+  section > .container {
+    padding-top: 80px;
+  }
 }
 
 *:focus-visible {
@@ -36,4 +41,52 @@ video {
   -moz-user-select: none !important;
   -ms-user-select: none !important;
   user-select: none !important;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 767px) {
+  .gears-container {
+    transform: scale(0.6);
+    width: 300px;
+    height: 300px;
+  }
+
+  .border-secondary {
+    padding: 5px;
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  nav .LanguageToggle {
+    margin-left: auto;
+  }
+
+  .contact-form {
+    padding: 0 20px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+
+  /* Mobile Menu Styles */
+  .mobile-menu-modal {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .mobile-menu-modal button {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .mobile-menu-modal button:active {
+    transform: scale(0.98);
+  }
 }

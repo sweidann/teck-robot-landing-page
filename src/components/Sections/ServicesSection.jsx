@@ -8,8 +8,8 @@ import VideoPlayer from "../VideoPlayer";
 const ServiceItem = ({ image, description, isReversed }) => {
   return (
     <div
-      className={`flex items-center gap-12 ${
-        isReversed ? "flex-row-reverse" : ""
+      className={`flex flex-col md:flex-row items-center gap-12 ${
+        isReversed ? "md:flex-row-reverse" : ""
       }`}
     >
       <motion.div
@@ -17,9 +17,9 @@ const ServiceItem = ({ image, description, isReversed }) => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
-        className="w-1/2 flex justify-center"
+        className="w-full md:w-1/2 flex justify-center"
       >
-        <div className="w-[500px] h-[500px] border-secondary rounded-full">
+        <div className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] border-secondary rounded-full">
           <img
             src={image}
             className="w-full h-full object-cover rounded-full"
@@ -31,11 +31,13 @@ const ServiceItem = ({ image, description, isReversed }) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
-        className={`w-1/2 flex  ${
+        className={`w-full md:w-1/2 flex justify-center md:${
           isReversed ? "justify-end" : "justify-start"
         }`}
       >
-        <p className="text-white text-[48px] font-black ">{description}</p>
+        <p className="text-white text-[32px] md:text-[48px] font-black text-center md:text-left px-4 md:px-0">
+          {description}
+        </p>
       </motion.div>
     </div>
   );
@@ -107,11 +109,11 @@ const ServicesSection = () => {
   }, [isInView, controls, xValues, yValues]);
 
   return (
-    <section id="services" ref={sectionRef} className="min-h-screen py-20">
-      <div className="container mx-auto px-6 relative flex flex-col">
-          <div className="flex items-center justify-start flex absolute top-[40vh]">
+    <section id="services" ref={sectionRef} className="min-h-screen py-10 md:py-20">
+      <div className="container mx-auto px-4 md:px-6 relative flex flex-col">
+          <div className="flex items-center justify-center md:justify-start flex absolute top-[20vh] md:top-[40vh] w-full md:w-auto">
             <h2
-              className="text-5xl font-black text-center text-white ml-[10vw]"
+              className="text-4xl md:text-5xl font-black text-center text-white md:ml-[10vw]"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("services.title")}
@@ -127,7 +129,7 @@ const ServicesSection = () => {
             }}
             playing={isInView}
           />
-        <div className="space-y-40 mt-[80vh]">
+        <div className="space-y-20 md:space-y-40 mt-[40vh] md:mt-[80vh]">
           {services.map((service, index) => (
             <ServiceItem
               key={index}
