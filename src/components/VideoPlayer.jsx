@@ -12,15 +12,15 @@ const VideoPlayer = ({ url, style, playing }) => {
         playsinline
         pip={false}
         stopOnUnmount={false}
-        config={{
-          file: {
-            attributes: {
-              controlsList: "nodownload",
-              disablePictureInPicture: true,
-              onContextMenu: (e) => e.preventDefault(),
-            },
-          },
-        }}
+        // config={{
+        //   file: {
+        //     attributes: {
+        //       controlsList: "nodownload",
+        //       disablePictureInPicture: true,
+        //       onContextMenu: (e) => e.preventDefault(),
+        //     },
+        //   },
+        // }}
       />
     </div>
   );
