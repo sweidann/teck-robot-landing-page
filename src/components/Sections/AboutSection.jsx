@@ -25,7 +25,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section id="about" className="min-h-screen py-20">
+    <section id="about" className="h-[50vh] md:min-h-screen py-20">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 gap-12 items-center">
           <motion.div

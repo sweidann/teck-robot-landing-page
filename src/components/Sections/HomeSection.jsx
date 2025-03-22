@@ -8,6 +8,7 @@ import VideoPlayer from "../VideoPlayer";
 const HomeSection = () => {
   const controls = useAnimation();
   const { t } = useLanguage();
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
   const [xValues, setXValues] = useState([]);
   const [yValues, setYValues] = useState([]);
@@ -31,8 +32,6 @@ const HomeSection = () => {
   }, []);
 
   const startLogoAnimation = () => {
-    console.log(xValues);
-    console.log(yValues);
     controls.start({
       x: xValues,
       y: yValues,
@@ -52,7 +51,7 @@ const HomeSection = () => {
   return (
     <section
       id="home"
-      className="h-screen relative flex items-center justify-center"
+      className="h-[50vh] md:h-screen relative flex items-center justify-center"
     >
       <div className="relative w-full h-full flex items-center justify-center">
         <div className="flex-[1.5] w-full h-full">
@@ -65,13 +64,14 @@ const HomeSection = () => {
               margin: "auto",
               left: "-30vw",
               top: "-10vh",
+              zIndex: -1,
             }}
-            controls
-            playing={true}
+            playing={isVideoPlaying}
+            onEnded={() => setIsVideoPlaying(false)}
           />
         </div>
         <motion.div
-          className="absolute w-[30vw] md:w-[20vw] h-[20vw]"
+          className="absolute w-[30vw] md:w-[20vw] h-[20vw] z-[100]"
           initial={{ x: "15vw", y: "35vh", scale: 2 }}
           animate={controls}
           viewport={{ once: false }}

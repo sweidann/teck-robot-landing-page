@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
 import {
-  fanucImage,
   sectionImage1,
   sectionImage2,
   sectionImage3,
@@ -57,6 +56,7 @@ ServiceItem.propTypes = {
 
 const ServicesSection = () => {
   const { t } = useLanguage();
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const services = [
     {
@@ -103,6 +103,7 @@ const ServicesSection = () => {
 
   useEffect(() => {
     if (isInView) {
+      setIsVideoPlaying(true);
       controls.start({
         x: xValues,
         y: yValues,
@@ -135,9 +136,11 @@ const ServicesSection = () => {
             position: "absolute",
             right: -150,
             top: -50,
-            zIndex: -100,
+            zIndex: -1,
+            pointerEvents: "none",
           }}
-          playing={isInView}
+          playing={isVideoPlaying}
+          onEnded={() => setIsVideoPlaying(false)}
         />
         <div className="space-y-20 md:space-y-40 mt-[40vh] md:mt-[80vh]">
           {services.map((service, index) => (
