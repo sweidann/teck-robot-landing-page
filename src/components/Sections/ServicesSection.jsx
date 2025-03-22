@@ -131,7 +131,7 @@ const ServicesSection = () => {
           </h2>
         </div>
         <VideoPlayer
-          url={"./assets/videos/armMoveRight.mp4"}
+          url={"./assets/videos/armMoveRight.mp4" + "#t=0.1"}
           style={{
             position: "absolute",
             right: -150,
