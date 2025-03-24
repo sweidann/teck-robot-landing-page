@@ -2,10 +2,19 @@ import ReactPlayer from "react-player";
 import PropTypes from "prop-types";
 
 const VideoPlayer = ({ url, style, playing, controls, onEnded }) => {
+  // Function to get video sources with fallback
+  const getVideoSources = (url) => {
+    const webmUrl = url.replace('.mp4', '.webm');
+    return [
+      { src: url, type: 'video/mp4' },
+      { src: webmUrl, type: 'video/webm' }
+    ];
+  };
+
   return (
     <div style={style} className="videoContainer">
       <ReactPlayer
-        url={url}
+        url={getVideoSources(url)}
         playing={playing}
         muted={true}
         playsinline={true}
@@ -23,9 +32,11 @@ const VideoPlayer = ({ url, style, playing, controls, onEnded }) => {
               autoPlay: true,
               muted: true,
               loop: false,
+              "webkit-playsinline": true,
+              playsinline: true,
             },
             forceVideo: true,
-            forceHLS: false,
+            forceHLS: false
           },
         }}
       />

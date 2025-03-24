@@ -56,7 +56,7 @@ const HomeSection = () => {
       <div className="relative w-full h-full flex items-center justify-center">
         <div className="flex-[1.5] w-full h-full">
           <VideoPlayer
-            url={"./assets/videos/armMoveLeft.mp4" + "#t=0.1"}
+            url={"./assets/videos/armMoveLeft.mp4"}
             style={{
               width: "100%",
               height: "100%",
