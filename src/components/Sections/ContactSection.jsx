@@ -94,7 +94,7 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
-      <div className="flex mt-20 lg:mt-0 flex-col lg:flex-row items-center gap-12 h-[40vh]">
+      <div className="flex mt-20 lg:mt-0 flex-col lg:flex-row items-center gap-12 xl:h-[300px]">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}

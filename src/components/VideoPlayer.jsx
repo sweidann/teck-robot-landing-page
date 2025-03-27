@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 const VideoPlayer = ({ url, style, playing, controls, onEnded }) => {
   // Function to get video sources with fallback
   const getVideoSources = (url) => {
-    const webmUrl = url.replace('.mp4', '.webm');
+    const webmUrl = url.replace(".mp4", ".webm");
     return [
-      { src: url, type: 'video/mp4' },
-      { src: webmUrl, type: 'video/webm' }
+      { src: url, type: "video/mp4" },
+      { src: webmUrl, type: "video/webm" },
     ];
   };
 
@@ -17,7 +17,6 @@ const VideoPlayer = ({ url, style, playing, controls, onEnded }) => {
         url={getVideoSources(url)}
         playing={playing}
         muted={true}
-        playsinline={true}
         loop={false}
         width="100%"
         height="100%"
@@ -27,16 +26,13 @@ const VideoPlayer = ({ url, style, playing, controls, onEnded }) => {
           file: {
             attributes: {
               playsInline: true,
-              webkitplaysinline: "true",
               preload: "auto",
               autoPlay: true,
               muted: true,
               loop: false,
-              "webkit-playsinline": true,
-              playsinline: true,
             },
             forceVideo: true,
-            forceHLS: false
+            forceHLS: false,
           },
         }}
       />
