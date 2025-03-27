@@ -17,6 +17,7 @@
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
     "autoprefixer": "^10.4.20",
+    "emailjs-com": "^3.2.0",
     "flag-icons": "^7.3.2",
     "framer-motion": "^12.4.3",
     "i18next": "^24.2.3",

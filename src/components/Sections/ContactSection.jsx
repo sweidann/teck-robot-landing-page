@@ -2,29 +2,106 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
 import { contactArmImage, fanucImage, logo, logoShadow } from "../../vars/vars";
+import emailjs from "emailjs-com";
+import { useState } from "react";
 
-const InputField = ({ label }) => (
+const InputField = ({ label, name, value, onChange, error }) => (
   <div className="relative w-full">
     <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-xs lg:text-sm font-semibold">
       {label}
     </label>
     <input
       type="text"
-      className="w-full px-4 py-3 bg-transparent border border-white rounded-full text-white placeholder-transparent focus:outline-none focus:ring-0"
+      name={name}
+      value={value}
+      onChange={onChange}
+      className={`w-full px-4 py-3 bg-transparent border rounded-full text-white placeholder-transparent focus:outline-none focus:ring-0 ${
+        error ? "border-[var(--yellow-color)]" : "border-white"
+      }`}
       placeholder={label}
     />
+    {error && (
+      <span className="text-[var(--yellow-color)] text-xs mt-1 ml-4">
+        {error}
+      </span>
+    )}
   </div>
 );
 
 InputField.propTypes = {
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 const ContactSection = () => {
   const { t } = useLanguage();
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    project: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Required fields validation
+    if (!formData.name.trim()) newErrors.name = t("validation.required");
+    if (!formData.company.trim()) newErrors.company = t("validation.required");
+    if (!formData.email.trim()) newErrors.email = t("validation.required");
+    if (!formData.phone.trim()) newErrors.phone = t("validation.required");
+    if (!formData.project.trim()) newErrors.project = t("validation.required");
+
+    // Email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email.trim())) {
+      newErrors.email = t("validation.invalidEmail");
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      // Just return if validation fails - errors will be shown next to fields
+      return;
+    }
+
+    const serviceId = "YOUR_SERVICE_ID";
+    const templateId = "YOUR_TEMPLATE_ID";
+    const userId = "YOUR_USER_ID";
+
+    emailjs
+      .send(serviceId, templateId, formData, userId)
+      .then((response) => {
+        alert(t("contact.success"));
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          project: "",
+        });
+        setErrors({}); // Clear any validation errors
+      })
+      .catch((error) => {
+        alert(t("contact.error"));
+      });
   };
 
   const fields = [
@@ -68,7 +145,14 @@ const ContactSection = () => {
             <form onSubmit={handleSubmit} className="max-w-4xl space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {fields.map((field) => (
-                  <InputField key={field.key} label={field.label} />
+                  <InputField
+                    key={field.key}
+                    name={field.key}
+                    label={field.label}
+                    value={formData[field.key]}
+                    onChange={handleChange}
+                    error={errors[field.key]}
+                  />
                 ))}
               </div>
 
@@ -77,10 +161,23 @@ const ContactSection = () => {
                   {t("contact.project")}
                 </label>
                 <textarea
+                  name="project"
+                  value={formData.project}
+                  onChange={handleChange}
                   placeholder={t("contact.project")}
                   rows={6}
-                  className="w-full px-4 py-3 bg-transparent border border-white rounded-[20px] text-white placeholder-transparent focus:outline-none focus:ring-0"
+                  className={`w-full px-4 py-3 bg-transparent border rounded-[20px] text-white placeholder-transparent focus:outline-none focus:ring-0 ${
+                    errors.project
+                      ? "border-[var(--yellow-color)]"
+                      : "border-white"
+                  }`}
+                  style={{ resize: "none" }}
                 ></textarea>
+                {errors.project && (
+                  <span className="text-[var(--yellow-color)] text-xs mt-1 ml-4">
+                    {errors.project}
+                  </span>
+                )}
               </div>
               <div className="w-full flex justify-end">
                 <button

@@ -4,14 +4,15 @@ export const translations = {
       home: "Home",
       about: "About Us",
       services: "Our Services",
-      contact: "Contact Us"
+      contact: "Contact Us",
     },
     hero: {
-      title: "TECH ROBOT: Rent a robot"
+      title: "TECH ROBOT: Rent a robot",
     },
     about: {
       title: "About Us",
-      mission: "Our Mission is to assist you towards the robotization of your projects."
+      mission:
+        "Our Mission is to assist you towards the robotization of your projects.",
     },
     services: {
       title: "Our Services",
@@ -19,8 +20,8 @@ export const translations = {
         "Project and feasibility studies",
         "Hiring the Right Robot",
         "Installation and integration",
-        "Technical Support and Maintenance"
-      ]
+        "Technical Support and Maintenance",
+      ],
     },
     contact: {
       title: "Contact Us",
@@ -29,29 +30,36 @@ export const translations = {
       email: "Email",
       phone: "Phone number",
       project: "Describe Your Project",
-      submit: "Send Message"
+      submit: "Send Message",
     },
     footer: {
-      rights: "All rights reserved."
+      rights: "All rights reserved.",
     },
     languages: {
       en: "English",
-      fr: "Français"
-    }
+      fr: "Français",
+    },
+    validation: {
+      required: "This field is required",
+      invalidEmail: "Please enter a valid email address",
+      invalidPhone: "Please enter a valid phone number",
+      checkErrors: "Please check the form for errors",
+    },
   },
   fr: {
     nav: {
       home: "Accueil",
       about: "Mission",
       services: "Nos services",
-      contact: "Nous joindre"
+      contact: "Nous joindre",
     },
     hero: {
-      title: "TECH ROBOT: Louer un robot"
+      title: "TECH ROBOT: Louer un robot",
     },
     about: {
       title: "Mission",
-      mission: "Notre mission est de vous accompagner à réaliser votre projet de robotisation"
+      mission:
+        "Notre mission est de vous accompagner à réaliser votre projet de robotisation",
     },
     services: {
       title: "Nos services",
@@ -59,24 +67,32 @@ export const translations = {
         "Études de projet et de faisabilité",
         "Embauchez le bon robot",
         "Installation et intégration",
-        "Support technique et maintenance"
-      ]
+        "Support technique et maintenance",
+      ],
     },
     contact: {
       title: "Nous joindre",
-      name: "Nom et prénom",
-      company: "Entreprise",
-      email: "Courriel",
-      phone: "Téléphone",
-      project: "Décrire votre projet",
-      submit: "Envoyer le message"
+      name: "Nom et prénom *",
+      company: "Entreprise *",
+      email: "Courriel *",
+      phone: "Téléphone *",
+      project: "Décrire votre projet *",
+      submit: "Envoyer le message",
+      success: "Message envoyé avec succès!",
+      error: "Échec de l'envoi du message. Veuillez réessayer.",
     },
     footer: {
-      rights: "Tous droits réservés."
+      rights: "Tous droits réservés.",
     },
     languages: {
       en: "English",
-      fr: "Français"
-    }
-  }
-}; 
+      fr: "Français",
+    },
+    validation: {
+      required: "Ce champ est obligatoire",
+      invalidEmail: "Veuillez entrer une adresse e-mail valide",
+      invalidPhone: "Veuillez entrer un numéro de téléphone valide",
+      checkErrors: "Veuillez vérifier les erreurs dans le formulaire",
+    },
+  },
+};
