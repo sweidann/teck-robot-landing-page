@@ -31,6 +31,8 @@ export const translations = {
       phone: "Phone number",
       project: "Describe Your Project",
       submit: "Send Message",
+      success: "Message sent successfully!",
+      error: "Failed to send message. Please try again",
     },
     footer: {
       rights: "All rights reserved.",
