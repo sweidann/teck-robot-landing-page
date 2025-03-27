@@ -1,10 +1,9 @@
-const assetsPath = "./assets/"
+const assetsPath = "./assets/";
 
 const sectionImage1 = assetsPath + "images/sectionImage1.jpg";
 const sectionImage2 = assetsPath + "images/sectionImage2.jpg";
 const sectionImage3 = assetsPath + "images/sectionImage3.jpg";
 const sectionImage4 = assetsPath + "images/sectionImage4.jpg";
-
 
 const homeArmImage = assetsPath + "images/Arm.png";
 
@@ -19,9 +18,19 @@ const gearImage4 = assetsPath + "images/Gear4.png";
 const fanucImage = assetsPath + "images/FANUCSolid.png";
 
 const contactArmImage = assetsPath + "images/ContactArm.png";
+const logoShadow = assetsPath + "images/LOGOSHADOWGEAR.png";
 
-export { sectionImage1, sectionImage2, sectionImage3, sectionImage4 , homeArmImage , logoImage , logo};
+export {
+  sectionImage1,
+  sectionImage2,
+  sectionImage3,
+  sectionImage4,
+  homeArmImage,
+  logoImage,
+  logo,
+  logoShadow,
+};
 
-export {gearImage1 , gearImage2 , gearImage3 ,gearImage4 , fanucImage};
+export { gearImage1, gearImage2, gearImage3, gearImage4, fanucImage };
 
-export {contactArmImage};
+export { contactArmImage };

@@ -20,6 +20,9 @@ const HomeSection = () => {
       if (width < 767) {
         setXValues(["20vw", "27vw", "29vw"]);
         setYValues(["0px", "-40px", "-45px"]);
+      } else if (width < 1025) {
+        setXValues(["20vw", "22vw", "24vw"]);
+        setYValues(["80px", "40px", "30px"]);
       } else {
         setXValues(["15vw", "17vw", "19vw"]);
         setYValues(["35vh", "25vh", "20vh"]);
@@ -84,14 +87,14 @@ const HomeSection = () => {
               className="w-full h-full object-cover"
             />
             <p
-              className="text-[8px] text-nowrap md:text-lg font-black text-center text-[var(--yellow-color)] absolute bottom-[10px] right-[25px] md:bottom-[4vh] 2xl:bottom-[5vh] md:right-[70px]"
+              className="text-[8px] text-nowrap md:text-[12px] xl:text-lg font-black text-center text-[var(--yellow-color)] absolute bottom-[10px] right-[25px] xl:bottom-[4vh] 2xl:bottom-[5vh] md:right-[40px] xl:right-[70px]"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("hero.title").split(":")[1].trim()}
             </p>
           </div>
         </motion.div>
-        <div className="opacity-30 absolute top-10 right-[-30%] md:top-20 right-[-20%] md:right-[-15%] ">
+        <div className="opacity-30 absolute top-10 right-[-30%] lg:top-20 right-[-20%] lg:right-[-15%] ">
           <GearsContainer
             gear2={gearImage2}
             gear3={gearImage3}

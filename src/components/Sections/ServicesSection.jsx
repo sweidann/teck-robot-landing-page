@@ -13,8 +13,8 @@ import VideoPlayer from "../VideoPlayer";
 const ServiceItem = ({ image, description, isReversed }) => {
   return (
     <div
-      className={`flex flex-col md:flex-row items-center gap-12 ${
-        isReversed ? "md:flex-row-reverse" : ""
+      className={`flex flex-col lg:flex-row items-center gap-12 ${
+        isReversed ? "lg:flex-row-reverse" : ""
       }`}
     >
       <motion.div
@@ -22,7 +22,7 @@ const ServiceItem = ({ image, description, isReversed }) => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
-        className="w-full md:w-1/2 flex justify-center"
+        className="w-full lg:w-1/2 flex justify-center"
       >
         <div className="w-[280px] h-[280px] md:w-[500px] md:h-[500px] border-secondary rounded-full">
           <img
@@ -36,11 +36,11 @@ const ServiceItem = ({ image, description, isReversed }) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false }}
         transition={{ duration: 0.5 }}
-        className={`w-full md:w-1/2 flex justify-center md:${
+        className={`w-full lg:w-1/2 flex justify-center md:${
           isReversed ? "justify-end" : "justify-start"
         }`}
       >
-        <p className="text-white text-[32px] md:text-[48px] font-black text-center md:text-left px-4 md:px-0">
+        <p className="text-white text-[32px] md:text-[48px] font-black text-center lg:text-left px-4 lg:px-0">
           {description}
         </p>
       </motion.div>

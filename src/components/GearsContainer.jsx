@@ -4,11 +4,11 @@ import { gearImage1 } from "../vars/vars";
 const GearsContainer = ({ gear2, gear3, gear4, rotation }) => {
   return (
     <div
-      className={`gears-container relative w-[500px] h-[500px] mx-auto ${rotation} `}
+      className={`gears-container relative w-[450px] h-[450px] md:w-[450px] md:h-[450px] xl:w-[500px] xl:h-[500px] mx-auto ${rotation} `}
     >
       <img
         src={gearImage1}
-        className="absolute top-[-50px] left-[-50px] z-[200]"
+        className="absolute top-[-50px] left-[-50px] z-[1]"
       />
       <img
         src={gear2}

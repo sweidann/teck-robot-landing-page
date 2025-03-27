@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
-import { contactArmImage, fanucImage, logo } from "../../vars/vars";
+import { contactArmImage, fanucImage, logo, logoShadow } from "../../vars/vars";
 
 const InputField = ({ label }) => (
-  <div className="relative w-[300px]">
-    <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-xs md:text-sm font-semibold">
+  <div className="relative w-full">
+    <label className="absolute -top-3 left-5 px-1 bg-[var(--primary-color)] text-white text-xs lg:text-sm font-semibold">
       {label}
     </label>
     <input
@@ -37,39 +37,36 @@ const ContactSection = () => {
   return (
     <section id="contact" className="min-h-screen py-10">
       <div className="container relative mx-auto px-6">
-        <div className="flex flex-row md:flex-col relative">
-          <div className="w-3/4 md:w-full md:hidden">
+        <div className="flex flex-row lg:flex-col relative">
+          <div className="w-3/4 lg:w-full lg:hidden">
             <img
               src={contactArmImage}
-              className="w-full h-[300px] object-cover"
+              className="w-full h-[300px] md:h-[500px] object-fit"
             />
           </div>
-          <div className="w-1/2 absolute top-[50%] left-[40%] md:static md:w-full flex items-center justify-center">
+          <div className="w-1/2 absolute top-[50%] left-[40%] lg:static lg:w-full flex items-center justify-center">
             <h2
-              className="text-3xl md:text-5xl font-black text-center mb-8 md:mb-16 text-white text-nowrap"
+              className="text-3xl lg:text-5xl font-black text-center mb-8 lg:mb-16 text-white text-nowrap"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("contact.title")}
             </h2>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col lg:flex-row">
           <img
             src={contactArmImage}
-            className="hidden md:block w-full md:w-1/2 h-[400px] md:h-[700px] 2xl:h-[900px] md:pr-[100px] mb-8 md:mb-0"
+            className="hidden lg:block w-full lg:w-1/2 h-[400px] lg:h-[700px] 2xl:h-[900px] lg:pr-[100px] mb-8 lg:mb-0"
           />
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="w-full md:w-1/2 flex flex-col justify-center"
+            className="w-full lg:w-1/2 flex flex-col justify-center"
           >
-            <form
-              onSubmit={handleSubmit}
-              className="max-w-4xl mx-auto space-y-8"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="max-w-4xl space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {fields.map((field) => (
                   <InputField key={field.key} label={field.label} />
                 ))}
@@ -88,7 +85,7 @@ const ContactSection = () => {
               <div className="w-full flex justify-end">
                 <button
                   type="submit"
-                  className="bg-[var(--yellow-color)] w-full md:w-auto text-white text-sm md:text-base p-3 md:p-5 m-left-auto rounded-lg transition-colors shadow-lg"
+                  className="bg-[var(--yellow-color)] w-full lg:w-auto text-white text-sm lg:text-base p-3 lg:p-5 m-left-auto rounded-lg transition-colors shadow-lg"
                 >
                   {t("contact.submit")}
                 </button>
@@ -97,13 +94,13 @@ const ContactSection = () => {
           </motion.div>
         </div>
       </div>
-      <div className="flex mt-20 md:mt-0 flex-col md:flex-row items-center gap-12 h-[40vh]">
+      <div className="flex mt-20 lg:mt-0 flex-col lg:flex-row items-center gap-12 h-[40vh]">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false }}
           transition={{ duration: 0.5 }}
-          className="w-3/4 md:w-1/2 h-full flex justify-center"
+          className="w-3/4 lg:w-1/2 h-full flex justify-center"
         >
           <img className="" src={fanucImage}></img>
         </motion.div>
@@ -114,7 +111,7 @@ const ContactSection = () => {
           transition={{ duration: 0.5 }}
           className={`w-1/2 h-full flex justify-center`}
         >
-          <img src={logo}></img>
+          <img src={logoShadow}></img>
         </motion.div>
       </div>
     </section>

@@ -59,7 +59,7 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        menuRef.current && 
+        menuRef.current &&
         !menuRef.current.contains(event.target) &&
         !menuBtnRef.current.contains(event.target)
       ) {
@@ -67,8 +67,8 @@ const Header = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const toggleMenu = (e) => {
@@ -86,19 +86,15 @@ const Header = () => {
         }`}
     >
       <div className="container mx-auto px-4 md:px-10 py-4">
-        <div className="hidden md:flex justify-between items-center">
+        <div className="hidden lg:flex justify-between items-center">
           <div className="logo">
-            <img
-              src={logo}
-              alt="Logo"
-              className="h-20"
-            />
+            <img src={logo} alt="Logo" className="h-20" />
           </div>
           <nav className="flex items-center gap-8">
             <ul className="flex gap-20">
               {navItems.map((item) => (
                 <li key={item.id}>
-                  <button 
+                  <button
                     onClick={() => scrollToSection(item.id)}
                     className={`text-sm md:text-lg font-black text-center ${
                       activeSection === item.id
@@ -116,7 +112,7 @@ const Header = () => {
           </nav>
         </div>
 
-        <div className="flex md:hidden justify-between items-center relative">
+        <div className="flex lg:hidden justify-between items-center relative">
           <button
             ref={menuBtnRef}
             onClick={toggleMenu}
@@ -132,9 +128,10 @@ const Header = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d={isMenuOpen 
-                  ? "M6 18L18 6M6 6l12 12" 
-                  : "M4 6h16M4 12h16M4 18h16"
+                d={
+                  isMenuOpen
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 6h16M4 12h16M4 18h16"
                 }
               />
             </svg>
@@ -149,7 +146,7 @@ const Header = () => {
           </div>
 
           {isMenuOpen && (
-            <div 
+            <div
               className="absolute top-full left-0 mt-2 w-48 bg-[var(--primary-color)] border border-white/20 rounded-lg shadow-lg overflow-hidden z-50"
               ref={menuRef}
             >

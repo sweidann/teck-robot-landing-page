@@ -27,13 +27,13 @@ const AboutSection = () => {
   return (
     <section id="about" className="h-[50vh] md:min-h-screen py-20">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-2 md:grid-cols-1 md:gap-20 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             whileInView={{ opacity: 1, x: isMobile ? -60 : 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
-            className="transform translate-x-[-100px] md:translate-x-[-200px]"
+            // className="transform translate-x-[-100px] md:translate-x-[-200px]"
           >
             <GearsContainer
               gear2={gearImage2}
@@ -48,7 +48,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <h2
-              className="text-3xl md:text-5xl font-black text-left mb-8 md:mb-16 text-white"
+              className="text-3xl md:text-5xl font-black text-left md:text-center lg:text-left mb-8 md:mb-16 text-white"
               style={{ textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)" }}
             >
               {t("about.title")}
