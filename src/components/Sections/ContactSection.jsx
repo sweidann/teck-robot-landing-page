@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { useLanguage } from "../../context/LanguageContext";
 import { contactArmImage, fanucImage, logo, logoShadow } from "../../vars/vars";
-import emailjs from "emailjs-com";
+import { sendEmail } from "../../api/sendEmail";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const InputField = ({ label, name, value, onChange, error }) => (
   <div className="relative w-full">
@@ -46,6 +47,9 @@ const ContactSection = () => {
     project: "",
   });
   const [errors, setErrors] = useState({});
+  const [lastSubmissionTime, setLastSubmissionTime] = useState(
+    localStorage.getItem("lastFormSubmission") || 0
+  );
 
   const handleChange = (e) => {
     setFormData({
@@ -56,52 +60,104 @@ const ContactSection = () => {
 
   const validateForm = () => {
     const newErrors = {};
+    const minLength = 2;
+    const maxLength = {
+      name: 50,
+      company: 100,
+      email: 100,
+      phone: 20,
+      project: 1000,
+    };
 
-    // Required fields validation
-    if (!formData.name.trim()) newErrors.name = t("validation.required");
-    if (!formData.company.trim()) newErrors.company = t("validation.required");
-    if (!formData.email.trim()) newErrors.email = t("validation.required");
-    if (!formData.phone.trim()) newErrors.phone = t("validation.required");
-    if (!formData.project.trim()) newErrors.project = t("validation.required");
+    // Check submission rate (minimum 1 minute between submissions)
+    const now = Date.now();
+    const timeSinceLastSubmission = now - lastSubmissionTime;
+    if (timeSinceLastSubmission < 60000) {
+      const remainingTime = Math.ceil((60000 - timeSinceLastSubmission) / 1000);
+      newErrors.form = t("validation.tooManyRequests") + ` (${remainingTime}s)`;
+      setErrors(newErrors);
+      return false;
+    }
 
-    // Email format validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (formData.email && !emailRegex.test(formData.email.trim())) {
-      newErrors.email = t("validation.invalidEmail");
+    // Required fields and length validation
+    if (!formData.name.trim()) {
+      newErrors.name = t("validation.required");
+    } else if (
+      formData.name.length < minLength ||
+      formData.name.length > maxLength.name
+    ) {
+      newErrors.name = t("validation.invalidLength");
+    }
+
+    if (!formData.company.trim()) {
+      newErrors.company = t("validation.required");
+    } else if (
+      formData.company.length < minLength ||
+      formData.company.length > maxLength.company
+    ) {
+      newErrors.company = t("validation.invalidLength");
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = t("validation.required");
+    } else {
+      // Enhanced email validation
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(formData.email.trim())) {
+        newErrors.email = t("validation.invalidEmail");
+      }
+      if (formData.email.length > maxLength.email) {
+        newErrors.email = t("validation.invalidLength");
+      }
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = t("validation.required");
+    }
+
+    if (!formData.project.trim()) {
+      newErrors.project = t("validation.required");
+    } else if (
+      formData.project.length < minLength ||
+      formData.project.length > maxLength.project
+    ) {
+      newErrors.project = t("validation.invalidLength");
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateForm()) {
-      // Just return if validation fails - errors will be shown next to fields
+      if (errors.form) {
+        toast.error(errors.form, {
+          icon: "⏳",
+          duration: 2000,
+        });
+      }
       return;
     }
 
-    const serviceId = "YOUR_SERVICE_ID";
-    const templateId = "YOUR_TEMPLATE_ID";
-    const userId = "YOUR_USER_ID";
-
-    emailjs
-      .send(serviceId, templateId, formData, userId)
-      .then((response) => {
-        alert(t("contact.success"));
-        setFormData({
-          name: "",
-          company: "",
-          email: "",
-          phone: "",
-          project: "",
-        });
-        setErrors({}); // Clear any validation errors
-      })
-      .catch((error) => {
-        alert(t("contact.error"));
+    try {
+      await sendEmail(formData);
+      const now = Date.now();
+      setLastSubmissionTime(now);
+      localStorage.setItem("lastFormSubmission", now);
+      toast.success(t("contact.success"));
+      setFormData({
+        name: "",
+        company: "",
+        email: "",
+        phone: "",
+        project: "",
       });
+      setErrors({});
+    } catch (error) {
+      toast.error(t("contact.error"));
+    }
   };
 
   const fields = [

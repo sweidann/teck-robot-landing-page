@@ -46,6 +46,9 @@ export const translations = {
       invalidEmail: "Please enter a valid email address",
       invalidPhone: "Please enter a valid phone number",
       checkErrors: "Please check the form for errors",
+      tooManyRequests: "Please wait at least 1 minute between submissions",
+      invalidLength: "Text length is invalid",
+      spam: "Your submission has been flagged as potential spam",
     },
   },
   fr: {
@@ -74,11 +77,11 @@ export const translations = {
     },
     contact: {
       title: "Nous joindre",
-      name: "Nom et prénom *",
-      company: "Entreprise *",
-      email: "Courriel *",
-      phone: "Téléphone *",
-      project: "Décrire votre projet *",
+      name: "Nom et prénom",
+      company: "Entreprise",
+      email: "Courriel",
+      phone: "Téléphone",
+      project: "Décrire votre projet",
       submit: "Envoyer le message",
       success: "Message envoyé avec succès!",
       error: "Échec de l'envoi du message. Veuillez réessayer.",
@@ -95,6 +98,10 @@ export const translations = {
       invalidEmail: "Veuillez entrer une adresse e-mail valide",
       invalidPhone: "Veuillez entrer un numéro de téléphone valide",
       checkErrors: "Veuillez vérifier les erreurs dans le formulaire",
+      tooManyRequests:
+        "Veuillez attendre au moins 1 minute entre les soumissions",
+      invalidLength: "La longueur du texte est invalide",
+      spam: "Votre soumission a été marquée comme spam potentiel",
     },
   },
 };
